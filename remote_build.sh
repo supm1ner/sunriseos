@@ -22,6 +22,7 @@ head -10 packages.x86_64
 
 echo ""
 echo "=== Запуск сборки ==="
+chmod +x build.sh
 sudo ./build.sh
 
 echo ""
