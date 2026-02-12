@@ -20,6 +20,11 @@ nm-connection-editor
 # calamares requires AUR or manual installation
 archinstall
 
+# GNOME Desktop
+gnome
+gnome-tweaks
+gdm
+
 # Utilities
 nano
 vim
