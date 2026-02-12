@@ -25,6 +25,12 @@ calamares
 gnome
 gnome-tweaks
 gdm
+gnome-shell-extensions
+gnome-browser-connector
+
+# GNOME Extensions (popular ones from AUR will need manual install)
+# These are available in official repos:
+extension-manager
 
 # Utilities
 nano

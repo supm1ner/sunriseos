@@ -18,4 +18,5 @@ file_permissions=(
   ["/root"]="0:0:750"
   ["/root/.automated_script.sh"]="0:0:755"
   ["/root/customize_airootfs.sh"]="0:0:755"
+  ["/usr/local/bin/install-gnome-extensions.sh"]="0:0:755"
 )

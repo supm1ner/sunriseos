@@ -88,6 +88,23 @@ EOF
 sudo -u live dbus-launch gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/sunriseos/dark.png' 2>/dev/null || true
 sudo -u live dbus-launch gsettings set org.gnome.desktop.background picture-uri-dark 'file:///usr/share/backgrounds/sunriseos/dark.png' 2>/dev/null || true
 
+# Включаем расширения GNOME
+sudo -u live dbus-launch gsettings set org.gnome.shell disable-user-extensions false 2>/dev/null || true
+
+# Создаем скрипт автозапуска для установки расширений
+mkdir -p /home/live/.config/autostart
+cat > /home/live/.config/autostart/install-extensions.desktop << 'EOF'
+[Desktop Entry]
+Type=Application
+Name=Install GNOME Extensions
+Exec=/usr/local/bin/install-gnome-extensions.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+EOF
+
+chmod +x /usr/local/bin/install-gnome-extensions.sh
+
 chown -R live:live /home/live
 
 # Настройка часового пояса
