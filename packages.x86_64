@@ -16,13 +16,9 @@ networkmanager
 network-manager-applet
 nm-connection-editor
 
-# GNOME Desktop
-gnome
-gnome-extra
-gdm
-
-# Calamares installer
-calamares
+# Installer (will be configured separately)
+# calamares requires AUR or manual installation
+archinstall
 
 # Utilities
 nano
@@ -31,7 +27,7 @@ git
 wget
 curl
 htop
-neofetch
+fastfetch
 
 # Compression
 zip
