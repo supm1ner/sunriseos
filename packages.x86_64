@@ -1,0 +1,72 @@
+# Base system
+base
+base-devel
+linux
+linux-firmware
+linux-headers
+
+# Bootloader
+grub
+efibootmgr
+os-prober
+
+# Network
+networkmanager
+network-manager-applet
+nm-connection-editor
+
+# GNOME Desktop
+gnome
+gnome-extra
+gdm
+
+# Calamares installer
+calamares
+
+# Utilities
+nano
+vim
+git
+wget
+curl
+htop
+neofetch
+
+# Compression
+zip
+unzip
+p7zip
+tar
+
+# Filesystem
+dosfstools
+ntfs-3g
+exfat-utils
+gvfs
+gvfs-mtp
+
+# Audio
+pipewire
+pipewire-alsa
+pipewire-pulse
+pipewire-jack
+wireplumber
+
+# Fonts
+ttf-dejavu
+ttf-liberation
+noto-fonts
+noto-fonts-emoji
+
+# Drivers
+mesa
+xf86-video-intel
+xf86-video-amdgpu
+xf86-video-nouveau
+nvidia-open-dkms
+
+# Additional tools
+firefox
+gnome-terminal
+file-roller
+gedit
