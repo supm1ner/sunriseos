@@ -20,9 +20,14 @@ Presentation
 
     Slide {
         anchors.fill: parent
+        Image {
+            anchors.fill: parent
+            source: "dark.png"
+            fillMode: Image.PreserveAspectCrop
+        }
         Rectangle {
             anchors.fill: parent
-            color: "#2c3e50"
+            color: "#80000000"
             Text {
                 anchors.centerIn: parent
                 text: "Добро пожаловать в SunriseOS!"
@@ -34,9 +39,14 @@ Presentation
 
     Slide {
         anchors.fill: parent
+        Image {
+            anchors.fill: parent
+            source: "dark.png"
+            fillMode: Image.PreserveAspectCrop
+        }
         Rectangle {
             anchors.fill: parent
-            color: "#34495e"
+            color: "#80000000"
             Text {
                 anchors.centerIn: parent
                 text: "Основан на Arch Linux"
@@ -48,9 +58,14 @@ Presentation
 
     Slide {
         anchors.fill: parent
+        Image {
+            anchors.fill: parent
+            source: "dark.png"
+            fillMode: Image.PreserveAspectCrop
+        }
         Rectangle {
             anchors.fill: parent
-            color: "#2c3e50"
+            color: "#80000000"
             Text {
                 anchors.centerIn: parent
                 text: "С рабочим столом GNOME"

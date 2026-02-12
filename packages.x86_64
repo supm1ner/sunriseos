@@ -19,6 +19,7 @@ nm-connection-editor
 # Installer (will be configured separately)
 # calamares requires AUR or manual installation
 archinstall
+calamares
 
 # GNOME Desktop
 gnome

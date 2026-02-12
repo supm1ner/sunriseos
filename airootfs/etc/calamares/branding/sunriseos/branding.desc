@@ -15,14 +15,15 @@ strings:
     releaseNotesUrl:     https://github.com/supm1ner/sunriseos/releases
 
 images:
-    productLogo:         "logo.png"
-    productIcon:         "logo.png"
-    productWelcome:      "welcome.png"
+    productLogo:         "dark.png"
+    productIcon:         "dark.png"
+    productWelcome:      "dark.png"
 
 slideshow:               "show.qml"
 
 style:
-   sidebarBackground:    "#2c3e50"
+   sidebarBackground:    "#1a1a1a"
    sidebarText:          "#ffffff"
    sidebarTextSelect:    "#4d4d4d"
    sidebarTextHighlight: "#e67e22"
+   windowBackground:     "#2c2c2c"
