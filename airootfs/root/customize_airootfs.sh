@@ -36,24 +36,24 @@ fi
 # Создаем desktop entry для установщиков
 mkdir -p /home/live/Desktop
 
-# Calamares installer
-cat > /home/live/Desktop/calamares.desktop << 'EOF'
+# SunriseOS Installer (Rust GUI)
+cat > /home/live/Desktop/installer.desktop << 'EOF'
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=Install SunriseOS (Graphical)
-Name[ru]=Установить SunriseOS (Графический)
-Comment=Calamares installer
-Comment[ru]=Установщик Calamares
-Exec=sudo -E calamares
-Icon=calamares
+Name=Install SunriseOS
+Name[ru]=Установить SunriseOS
+Comment=SunriseOS graphical installer
+Comment[ru]=Графический установщик SunriseOS
+Exec=pkexec /usr/local/bin/sunriseos-installer
+Icon=system-software-install
 Terminal=false
 StartupNotify=true
 Categories=System;
 EOF
 
-# Archinstall (text-based)
-cat > /home/live/Desktop/install.desktop << 'EOF'
+# Archinstall (text-based backup)
+cat > /home/live/Desktop/archinstall.desktop << 'EOF'
 [Desktop Entry]
 Type=Application
 Version=1.0
@@ -62,14 +62,14 @@ Name[ru]=Установить SunriseOS (Терминал)
 Comment=Archinstall - text installer
 Comment[ru]=Archinstall - текстовый установщик
 Exec=gnome-terminal -- sudo archinstall
-Icon=system-software-install
+Icon=utilities-terminal
 Terminal=false
 StartupNotify=true
 Categories=System;
 EOF
 
-chmod +x /home/live/Desktop/calamares.desktop
-chmod +x /home/live/Desktop/install.desktop
+chmod +x /home/live/Desktop/installer.desktop
+chmod +x /home/live/Desktop/archinstall.desktop
 chown -R live:live /home/live
 
 # Настройка обоев для live пользователя

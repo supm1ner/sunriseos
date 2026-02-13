@@ -19,4 +19,5 @@ file_permissions=(
   ["/root/.automated_script.sh"]="0:0:755"
   ["/root/customize_airootfs.sh"]="0:0:755"
   ["/usr/local/bin/install-gnome-extensions.sh"]="0:0:755"
+  ["/usr/local/bin/sunriseos-installer"]="0:0:755"
 )

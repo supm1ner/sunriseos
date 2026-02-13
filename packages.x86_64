@@ -19,7 +19,10 @@ nm-connection-editor
 # Installer (will be configured separately)
 # calamares requires AUR or manual installation
 archinstall
-calamares
+
+# Rust for custom installer
+rust
+cargo
 
 # GNOME Desktop
 gnome
@@ -31,6 +34,10 @@ gnome-browser-connector
 # GNOME Extensions (popular ones from AUR will need manual install)
 # These are available in official repos:
 extension-manager
+
+# GTK4 and libadwaita for installer
+gtk4
+libadwaita
 
 # Utilities
 nano
