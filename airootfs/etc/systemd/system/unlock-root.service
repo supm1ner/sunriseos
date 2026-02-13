@@ -1,0 +1,13 @@
+[Unit]
+Description=Unlock root account for live system
+Before=getty@tty1.service
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/passwd -d root
+ExecStart=/usr/bin/usermod -U root
+RemainAfterExit=yes
+
+[Install]
+WantedBy=sysinit.target

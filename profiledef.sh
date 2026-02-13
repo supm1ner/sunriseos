@@ -17,6 +17,7 @@ file_permissions=(
   ["/root"]="0:0:750"
   ["/root/.xinitrc"]="0:0:755"
   ["/root/.zlogin"]="0:0:755"
+  ["/root/.automated_script.sh"]="0:0:755"
   ["/usr/local/bin/install-gnome-extensions.sh"]="0:0:755"
   ["/usr/local/bin/sunriseos-installer"]="0:0:755"
 )
