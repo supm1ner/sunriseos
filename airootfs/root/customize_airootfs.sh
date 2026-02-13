@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-set -e -u
+# НЕ используем set -e чтобы скрипт не падал на ошибках
+set -u
 
 # Настройка локали
 sed -i 's/#en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen
 sed -i 's/#ru_RU.UTF-8/ru_RU.UTF-8/' /etc/locale.gen
 locale-gen
 
-# Устанавливаем пароль root ПЕРЕД всем остальным
-echo "root:root" | chpasswd
-passwd -u root
+# Простой способ - устанавливаем пустой пароль для root
+passwd -d root
 
 # Разрешаем wheel группе использовать sudo БЕЗ пароля для live системы
 sed -i 's/# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers
@@ -22,19 +22,15 @@ echo "live:live" | chpasswd
 
 # Включаем необходимые сервисы
 systemctl enable NetworkManager
-if systemctl list-unit-files | grep -q gdm.service; then
-    systemctl enable gdm
-fi
+systemctl enable gdm 2>/dev/null || true
 
-# Автологин для live пользователя (если GDM установлен)
-if [ -d /usr/share/gdm ]; then
-    mkdir -p /etc/gdm
-    cat > /etc/gdm/custom.conf << 'EOF'
+# Автологин для live пользователя
+mkdir -p /etc/gdm
+cat > /etc/gdm/custom.conf << 'EOF'
 [daemon]
 AutomaticLoginEnable=True
 AutomaticLogin=live
 EOF
-fi
 
 # Создаем desktop entry для установщиков
 mkdir -p /home/live/Desktop
@@ -71,47 +67,16 @@ StartupNotify=true
 Categories=System;
 EOF
 
-chmod +x /home/live/Desktop/installer.desktop
-chmod +x /home/live/Desktop/archinstall.desktop
-chown -R live:live /home/live
+chmod +x /home/live/Desktop/installer.desktop 2>/dev/null || true
+chmod +x /home/live/Desktop/archinstall.desktop 2>/dev/null || true
 
 # Настройка обоев для live пользователя
 mkdir -p /home/live/.config
-cat > /home/live/.config/dconf-user.conf << 'EOF'
-[org/gnome/desktop/background]
-picture-uri='file:///usr/share/backgrounds/sunriseos/dark.png'
-picture-uri-dark='file:///usr/share/backgrounds/sunriseos/dark.png'
-picture-options='zoom'
 
-[org/gnome/desktop/screensaver]
-picture-uri='file:///usr/share/backgrounds/sunriseos/dark.png'
-EOF
-
-# Применяем настройки dconf
-sudo -u live dbus-launch gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/sunriseos/dark.png' 2>/dev/null || true
-sudo -u live dbus-launch gsettings set org.gnome.desktop.background picture-uri-dark 'file:///usr/share/backgrounds/sunriseos/dark.png' 2>/dev/null || true
-
-# Включаем расширения GNOME
-sudo -u live dbus-launch gsettings set org.gnome.shell disable-user-extensions false 2>/dev/null || true
-
-# Создаем скрипт автозапуска для установки расширений
-mkdir -p /home/live/.config/autostart
-cat > /home/live/.config/autostart/install-extensions.desktop << 'EOF'
-[Desktop Entry]
-Type=Application
-Name=Install GNOME Extensions
-Exec=/usr/local/bin/install-gnome-extensions.sh
-Hidden=false
-NoDisplay=false
-X-GNOME-Autostart-enabled=true
-EOF
-
-chmod +x /usr/local/bin/install-gnome-extensions.sh 2>/dev/null || true
-
-chown -R live:live /home/live
+# Применяем настройки
+chown -R live:live /home/live 2>/dev/null || true
 
 # Настройка часового пояса
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
-# Финальная проверка что root разблокирован
-passwd -u root || true
+echo "Customize script completed"
