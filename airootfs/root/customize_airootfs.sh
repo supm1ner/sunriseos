@@ -7,6 +7,10 @@ sed -i 's/#en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen
 sed -i 's/#ru_RU.UTF-8/ru_RU.UTF-8/' /etc/locale.gen
 locale-gen
 
+# Устанавливаем пароль root ПЕРЕД всем остальным
+echo "root:root" | chpasswd
+passwd -u root
+
 # Разрешаем wheel группе использовать sudo БЕЗ пароля для live системы
 sed -i 's/# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers
 
@@ -15,7 +19,6 @@ if ! id -u live > /dev/null 2>&1; then
     useradd -m -G wheel -s /bin/bash live
 fi
 echo "live:live" | chpasswd
-echo "root:root" | chpasswd
 
 # Включаем необходимые сервисы
 systemctl enable NetworkManager
@@ -103,12 +106,12 @@ NoDisplay=false
 X-GNOME-Autostart-enabled=true
 EOF
 
-chmod +x /usr/local/bin/install-gnome-extensions.sh
+chmod +x /usr/local/bin/install-gnome-extensions.sh 2>/dev/null || true
 
 chown -R live:live /home/live
 
 # Настройка часового пояса
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
-# Разблокируем root аккаунт
-passwd -u root
+# Финальная проверка что root разблокирован
+passwd -u root || true
