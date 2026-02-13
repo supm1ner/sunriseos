@@ -14,11 +14,9 @@ pacman_conf="pacman.conf"
 airootfs_image_type="squashfs"
 airootfs_image_tool_options=('-comp' 'xz' '-Xbcj' 'x86' '-b' '1M' '-Xdict-size' '1M')
 file_permissions=(
-  ["/etc/shadow"]="0:0:400"
-  ["/etc/passwd"]="0:0:644"
-  ["/etc/group"]="0:0:644"
-  ["/etc/gshadow"]="0:0:400"
   ["/root"]="0:0:750"
+  ["/root/.xinitrc"]="0:0:755"
+  ["/root/.zlogin"]="0:0:755"
   ["/usr/local/bin/install-gnome-extensions.sh"]="0:0:755"
   ["/usr/local/bin/sunriseos-installer"]="0:0:755"
 )
