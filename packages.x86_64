@@ -1,0 +1,93 @@
+# Base system
+base
+base-devel
+linux
+linux-firmware
+linux-headers
+syslinux
+zsh
+mkinitcpio
+mkinitcpio-archiso
+arch-install-scripts
+squashfs-tools
+
+# Bootloader
+grub
+efibootmgr
+os-prober
+
+# Network
+networkmanager
+network-manager-applet
+nm-connection-editor
+
+# Installer (will be configured separately)
+# calamares requires AUR or manual installation
+archinstall
+
+# Rust for custom installer
+rust
+cargo
+
+# GNOME Desktop
+gnome
+gnome-tweaks
+gdm
+gnome-shell-extensions
+gnome-browser-connector
+
+# GNOME Extensions (popular ones from AUR will need manual install)
+# These are available in official repos:
+extension-manager
+
+# GTK4 and libadwaita for installer
+gtk4
+libadwaita
+
+# Utilities
+nano
+vim
+git
+wget
+curl
+htop
+fastfetch
+
+# Compression
+zip
+unzip
+p7zip
+tar
+
+# Filesystem
+dosfstools
+ntfs-3g
+exfat-utils
+gvfs
+gvfs-mtp
+
+# Audio
+pipewire
+pipewire-alsa
+pipewire-pulse
+pipewire-jack
+wireplumber
+
+# Fonts
+ttf-dejavu
+ttf-liberation
+noto-fonts
+noto-fonts-emoji
+
+# Drivers
+mesa
+xf86-video-intel
+xf86-video-amdgpu
+xf86-video-nouveau
+nvidia-open-dkms
+
+# Additional tools
+firefox
+gnome-terminal
+file-roller
+gedit
